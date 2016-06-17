@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.1"
+   id="svg2"
+   viewBox="0 0 1200.0001 699.99999"
+   height="700"
+   width="1200">
+  <defs
+     id="defs4">
+    <radialGradient
+       fx="0"
+       fy="0"
+       cx="0"
+       cy="0"
+       r="1"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(401.53787,0,0,-401.53787,480.09045,282.15945)"
+       spreadMethod="pad"
+       id="radialGradient4158">
+      <stop
+         style="stop-opacity:1;stop-color:#ffffff"
+         offset="0"
+         id="stop4160" />
+      <stop
+         style="stop-opacity:1;stop-color:#ffffff"
+         offset="0.352041"
+         id="stop4162" />
+      <stop
+         style="stop-opacity:1;stop-color:#ff931e"
+         offset="0.65912912"
+         id="stop4164" />
+      <stop
+         style="stop-opacity:1;stop-color:#ff931e"
+         offset="1"
+         id="stop4166" />
+    </radialGradient>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath4178">
+      <path
+         d="M 0,560 960,560 960,0 0,0 0,560 Z"
+         id="path4180" />
+    </clipPath>
+  </defs>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="translate(0,-352.36233)"
+     id="layer1">
+    <g
+       id="g4144"
+       transform="matrix(1.25,0,0,-1.25,-460,1286.6143)">
+      <flowRoot
+         transform="matrix(0.8,0,0,-0.8,368,875.03264)"
+         style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         id="flowRoot4211"
+         xml:space="preserve"><flowRegion
+           id="flowRegion4213"><rect
+             y="845.66931"
+             x="-47.140488"
+             height="95.006218"
+             width="210.31911"
+             id="rect4215" /></flowRegion><flowPara
+           id="flowPara4217"></flowPara></flowRoot>    </g>
+    <g
+       transform="matrix(1.25,0,0,-1.25,0,1052.3623)"
+       id="g4146">
+      <g
+         id="g4148">
+        <g
+           id="g4154">
+          <g
+             id="g4156">
+            <path
+               d="M 0,0 960,0 960,560 0,560 0,0 Z"
+               style="fill:url(#radialGradient4158);stroke:none"
+               id="path4168" />
+          </g>
+        </g>
+      </g>
+    </g>
+    <g
+       id="g4170"
+       transform="matrix(1.25,0,0,-1.25,607.83012,552.28209)">
+      <path
+         d="m 0,0 -6.738,4.732 -6.877,-4.726 -53.934,-36.919 0,18.79 -30.237,0 0,-39.49 -31.474,-21.55 13.573,-19.822 108.8,74.468 110.061,-75.137 13.558,19.828 L 0,0 Z"
+         style="fill:#1b1464;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="path4172" />
+    </g>
+    <g
+       transform="matrix(1.25,0,0,-1.25,0,1052.3623)"
+       id="g4174">
+      <g
+         id="g4176"
+         clip-path="url(#clipPath4178)">
+        <g
+           id="g4182"
+           transform="translate(487.7691,189.6532)">
+          <path
+             d="m 0,0 0,-20.9 -23.856,0 0,19.261 c -11.495,0.922 -22.995,4.35 -30.076,9.077 l -2.364,1.574 7.468,25.988 4.312,-2.546 c 8.734,-5.149 19.182,-8.107 28.661,-8.107 10.285,0 16.936,4.571 16.936,11.638 0,4.84 -2.287,10.145 -18.855,16.189 -18.05,6.534 -36.518,16.253 -36.518,38.79 0,18.148 12.027,31.907 31.612,36.534 l 0,19.958 23.852,0 0,-18.455 c 9.259,-0.694 17.268,-2.845 24.948,-6.691 l 2.903,-1.454 -7.479,-25.466 -5.183,2.377 c -4.651,2.174 -12.447,5.808 -23.977,5.808 -9.243,0 -14.767,-3.682 -14.767,-9.865 0,-5.382 5.176,-9.186 21.321,-15.64 C 22.907,69.079 33.18,57.128 33.18,38.15 33.18,19.208 20.267,4.525 0,0 m -11.558,157.21 c -51.873,0 -93.93,-42.054 -93.93,-93.933 0,-51.876 42.057,-93.93 93.93,-93.93 51.877,0 93.93,42.054 93.93,93.93 0,51.879 -42.053,93.933 -93.93,93.933"
+             style="fill:#f7931e;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             id="path4184" />
+        </g>
+      </g>
+    </g>
+    <text
+       y="947.16187"
+       x="273.68164"
+       style="font-variant:normal;font-weight:normal;font-stretch:normal;font-size:100px;font-family:'Book Antiqua';-inkscape-font-specification:BookAntiqua;writing-mode:lr-tb;fill:#009245;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="text4186">
+      <tspan
+         y="947.16187"
+         x="273.68164"
+         id="tspan4188">Slick Vouchers</tspan>
+    </text>
+  </g>
+</svg>

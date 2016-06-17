@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Slick Vouchers</title>
+  <link rel="icon" href="../static/images/favicon.ico"/>
+
+    
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default rounded borders and increase the bottom margin */ 
+    .navbar {
+      margin-bottom: 50px;
+      border-radius: 0;
+    }
+    
+    /* Remove the jumbotron's default bottom margin */ 
+     .jumbotron {
+      margin-bottom: 0;
+    }
+
+    .panel-button {
+      width: 90%;
+      padding: 10px;
+      margin-bottom: 25px;
+      font-size: 125%;
+    }
+
+    .panel-button-sold-out {
+      width: 90%;
+      padding: 10px;
+      margin-bottom: 25px;
+      font-size: 125%;
+      background-color: #ebccd1;
+      border-color: #ebccd1;
+      color: #a94442;
+
+    }
+
+    .btn-danger:focus {
+      background-color: #ebccd1;
+    }
+
+    .btn-danger:hover {
+      background-color: #ebccd1;
+    }
+
+    .panel-img {
+      min-height: 250px;
+      max-height: 250px;
+      object-fit: contain;
+      padding-bottom: 12px;
+      width: 100%;
+    }
+
+    .panel-title {
+      font-size: 125%;
+      min-height: 95px;
+      max-height: 95px;
+      overflow: hidden;
+      text-overflow: clip;
+    }
+
+    .price-text {
+      font-size: 150%;
+      padding-left: 8px;
+      line-height: 25px;
+      text-align: left;
+    }
+
+    .price-text-soldout {
+      font-size: 150%;
+      padding-left: 8px;
+      line-height: 25px;
+      text-align: left;
+      color: #a94442;
+    }
+
+    .logo-style {
+      max-height: 45px;
+      position: relative;
+      top: -15px;
+    }
+
+    .search-style {
+      width: 40%;
+      /*min-height:40px;*/
+      /*font-size:125%;*/
+    }
+    
+    .search-button-style {
+      /*width: 40%;*/
+      min-height:150%;
+      /*font-size:125%;*/
+    }
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- <div class="jumbotron" style="background-image: url(http://2.bp.blogspot.com/-ncZQX5_zsio/UCIcjAtDMkI/AAAAAAAAACo/ZoFvzfrKhe8/s1600/Boxes.png); background-size: cover;">
+  <div class="container text-center" >
+    <h1>Slick Coupons</h1>      
+    <p>The best place to get up too 100% off on select items!</p>
+  </div>
+</div> -->
+<!-- <div class="jumbotron" style="background:#2c5b92;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <img src="../static/images/modifiedlogo.svg" style="max-height:200px" />
+            </div>
+            <div class="col-lg-6">
+                <img src="http://dairylandpackaging.com/wp-content/uploads/2014/06/DYPK_Boxes_188145176.jpg" class="pull-right" style="max-height:200px" />
+            </div>
+        </div>
+      </div>
+</div> -->
+
+<nav class="navbar navbar-default navbar-fixed-top" >
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand navbar-left" href="/"><img src="../static/images/horizontalLogo.svg" alt="Logo" class="logo-style"/></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <!-- <li class="active"><a href="#">Home</a></li> -->
+        <!-- <li><a href="#">My Products</a></li> -->
+        <!-- <li><a href="#">Deals</a></li> -->
+        <!-- <li><a href="#">Stores</a></li> -->
+        <!-- <li><a href="#">Contact</a></li> -->
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <!-- <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your Account </a></li> -->
+        <li><a href="/products"><span class="glyphicon glyphicon-shopping-cart"></span> My Products</a></li>
+        <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<h3 class="text-center" style="margin-top: 100px; margin-bottom:50px"> Today's Deals! </h3>
+<h2 class="text-center" style="margin-top: 100px; margin-bottom:50px"> Sorry, there are currently no deals going on. Please check again later. Deals start at 3PM EST every day! </h2>
+
+
+
+<!--
+<div class="container">    
+  <div class="row">
+    <div class="col-sm-4 panel-properties">
+      <div class="panel panel-primary">
+        <div class="panel-heading panel-title">Dead Sea Mud Mask by First Botany etc etc etc etce kklas eklhrjlakd alksj al;ks kladuaklsdu lakusdlaksud akajshkaj hello is this seen here </div>
+        <div class="panel-body ">
+        <img src="http://ecx.images-amazon.com/images/I/71rVCIMM0mL._SL1190_.jpg" class="img-responsive panel-img" style="width:100%" alt="Image">
+        <div class="price-text center-block"> Was: <strike>$50</strike></div>
+        <div class="price-text center-block"> <b>Now: $0.99</b> </div>
+        </div>
+        <a class="btn btn-primary center-block panel-button" href="#item">Get Coupon!</a>
+      </div>
+    </div>
+    <div class="col-sm-4 panel-properties">
+      <div class="panel panel-primary">
+        <div class="panel-heading panel-title">Dead Sea Mud Mask by First Botany etc etc etc etce</div>
+        <div class="panel-body ">
+        <img src="http://ecx.images-amazon.com/images/I/81p8Xgo9azL._SL1500_.jpg" class="img-responsive panel-img" class="img-responsive panel-img" style="width:100%" alt="Image">
+        <div class="price-text center-block"> Was: <strike>$50</strike></div>
+        <div class="price-text center-block"> <b>Now: $0.99</b> </div>
+        </div>
+        <button type="button" class="btn btn-primary center-block panel-button">Buy Now!</button>
+        
+      </div>
+    </div>
+    <div class="col-sm-4 panel-properties">
+      <div class="panel panel-danger">
+        <div class="panel-heading panel-title">Dead Sea Mud Mask by First Botany etc etc etc etce</div>
+        <div class="panel-body ">
+        <img src="http://ecx.images-amazon.com/images/I/81p8Xgo9azL._SL1500_.jpg" class="img-responsive panel-img" class="img-responsive panel-img" style="opacity:0.5" alt="Image">
+        <div class="price-text-soldout center-block"> Was: <strike>$50</strike></div>
+        <div class="price-text-soldout center-block"> <b>Now: $0.99</b> </div>
+        </div>
+        <button type="button" class="btn btn-danger center-block panel-button-sold-out" disabled>Sorry, Sold Out!</button>
+         
+      </div>
+    </div>
+        <div class="col-sm-4 panel-properties">
+      <div class="panel panel-primary">
+        <div class="panel-heading panel-title">Dead Sea Mud Mask by First Botany etc etc etc etce</div>
+        <div class="panel-body ">
+        <img src="http://ecx.images-amazon.com/images/I/81p8Xgo9azL._SL1500_.jpg" class="img-responsive panel-img" class="img-responsive panel-img" style="width:100%" alt="Image">
+        <div class="price-text center-block"> Was: <strike>$50</strike></div>
+        <div class="price-text center-block"> <b>Now: $0.99</b> </div>
+        </div>
+        <button type="button" class="btn btn-primary center-block panel-button">Buy Now!</button>
+        <div class="panel-footer">Buy 50 mobiles and get a gift card</div> 
+      </div>
+    </div>
+  </div>
+</div><br><br>
+-->
+
+<div class="container">  
+  <form action="deals" method="get" id="form1">
+      <div style="text-align:center; height:200%;">
+      <input type="text" class="input-large search-query search-style" name="s" placeholder="Search" value="">
+      <button type="submit" form="form1" value="Submit"><i class="glyphicon glyphicon-search search-button-style"></i></button> 
+      </div>
+  </form>
+  <br><br>
+  <div class="row">
+      {% for product in products %}
+      <div class="col-sm-4 panel-properties">
+        <div class="panel panel-primary">
+          <div class="panel-heading panel-title">{{product.productTitle}} </div>
+            <div class="panel-body">
+              <a href="/product?id={{product.reviewProductId}}&picurl={{product.imageURL}}" target="_blank">
+              <img src="{{product.imageURL}}" class="img-responsive panel-img" style="width:100%" alt="Image"></a>
+              <div class="price-text center-block"> Was: <strike>{{product.normalPrice}}</strike></div>
+              <div class="price-text center-block"> <b>Now: ${{product.promoPrice}}</b> </div>
+            </div>
+          <a class="btn btn-primary center-block panel-button" href="/product?id={{product.reviewProductId}}&picurl={{product.imageURL}}" target="_blank">Get Coupon!</a>
+          <div class="panel-footer">{{product.startDate}}</div> 
+        </div>
+      </div>
+      {% endfor %}
+  </div>
+</div>
+<br>
+<br>
+<br>
+<footer class="container-fluid text-center">
+  <p>&copy; 2016 Slick Vouchers</p>  
+<!--   <form class="form-inline">Get deals:
+    <input type="email" class="form-control" size="50" placeholder="Email Address">
+    <button type="button" class="btn btn-danger">Sign Up</button>
+  </form> -->
+</footer>
+
+</body>
+</html>
