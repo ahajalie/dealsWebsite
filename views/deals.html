@@ -90,6 +90,10 @@
       /*min-height:40px;*/
       /*font-size:125%;*/
     }
+
+    .query-style {
+      width:20%;
+    }
     
     .search-button-style {
       /*width: 40%;*/
@@ -213,11 +217,19 @@
 <div class="container">  
   <form action="deals" method="get" id="form1">
       <div style="text-align:center; height:200%;">
-      <input type="text" class="input-large search-query search-style" name="s" placeholder="Search" value="">
+      <input type="text" class="input-large search-query search-style" name="s" placeholder="Search" value="{{searchValue}}">
+      <input type="text" class="input-large search-query query-style" name="q" placeholder="Additonal Query Paramaters" value="">
       <button type="submit" form="form1" value="Submit"><i class="glyphicon glyphicon-search search-button-style"></i></button> 
       </div>
   </form>
-  <br><br>
+  <ul class="pager">
+        {% if prevPage %}      
+        <li class="previous"><a href="{{url_for_other_page(pageNumber,-1)}}">Previous Page</a></li>
+        {% endif %}
+        {% if nextPage %}        
+        <li class="next"><a href="{{url_for_other_page(pageNumber, 1)}}">Next Page</a></li>
+        {% endif %}        
+  </ul>  
   <div class="row">
       {% for product in products %}
       <div class="col-sm-4 panel-properties">
@@ -233,8 +245,18 @@
           <div class="panel-footer">{{product.startDate}}</div> 
         </div>
       </div>
-      {% endfor %}
+      {% endfor %}      
   </div>
+    <br>
+<ul class="pager">
+        {% if prevPage %}      
+        <li class="previous"><a href="{{url_for_other_page(pageNumber,-1)}}">Previous Page</a></li>
+        {% endif %}
+        {% if nextPage %}        
+        <li class="next"><a href="{{url_for_other_page(pageNumber, 1)}}">Next Page</a></li>
+        {% endif %}        
+  </ul> 
+      
 </div>
 <br>
 <br>

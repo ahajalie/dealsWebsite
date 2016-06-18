@@ -15,7 +15,19 @@ mimetypes.add_type('image/svg+xml', '.svg')
 
 db = SQLAlchemy()
 
-dbconfig = {
+# dbconfig = {
+# 	'user': 'root',
+# 	# 'passwd': 'thebesteecsgroupever',
+# 	'host': 'localhost',
+# 	'db': 'dealsWebsite'
+# 	# 'db' : 'website'
+# }
+
+# @app.before_request
+# def make_session_permanent():
+# 	session.permanent = True
+
+codesDB = {
 	'user': 'root',
 	# 'passwd': 'thebesteecsgroupever',
 	'host': 'localhost',
@@ -23,10 +35,12 @@ dbconfig = {
 	'db' : 'website'
 }
 
-# @app.before_request
-# def make_session_permanent():
-# 	session.permanent = True
-
+dbconfig = {
+	'user': 'hajalie7',
+	'passwd': 'broncos24',
+	'host': 'hajalie7.mysql.pythonanywhere-services.com',
+	'db' : 'hajalie7$default'
+}
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -38,9 +52,10 @@ def index():
 		if "sign_up" in request.form:
 			db = MySQLdb.connect(**dbconfig)
 			cur = db.cursor(MySQLdb.cursors.DictCursor);
+			email = request.form['email'].lower()
 			cur.execute('''SELECT * 
 			FROM User 
-			WHERE email=%s ''', (request.form['email'],))
+			WHERE email=%s ''', (email,))
 			users = cur.fetchall();
 			if (len(users) > 0):
 				flash("Error: Email already exists, please try again")
@@ -51,20 +66,21 @@ def index():
 				password = str(request.form['password0']) + salt;
 				password = str(hashlib.sha1(password).hexdigest())
 				cur.execute('''INSERT INTO User(email, salt, pass) VALUES (%s, %s, %s) ''',
-						(request.form['email'], salt, password,))
+						(email, salt, password,))
 				db.commit()
 				cur.close()
 				db.close()
-				session['user'] = request.form['email']
+				session['user'] = email
 				session['logged_in'] = True
 				session.permanent = True;
 				return redirect('/deals')
 		elif "log_in" in request.form:
 				db = MySQLdb.connect(**dbconfig)
 				cur = db.cursor(MySQLdb.cursors.DictCursor);
+				loginemail = request.form['loginemail'].lower()
 				cur.execute('''SELECT salt 
 					FROM User 
-					WHERE email=%s''', (request.form['loginemail'],))
+					WHERE email=%s''', (loginemail,))
 				users = cur.fetchall()
 				salt = "";
 				if(len(users) != 0):
@@ -73,14 +89,14 @@ def index():
 				password = str(hashlib.sha1(password).hexdigest())
 				cur.execute('''SELECT * 
 					FROM User 
-					WHERE email=%s and pass=%s''', (request.form['loginemail'], password,))
+					WHERE email=%s and pass=%s''', (loginemail, password,))
 				users = cur.fetchall();
 				if (len(users) == 0):
 					flash("There was a problem logging in. Either the email address or password is incorrect")
 					return render_template("index.html")
 				else:
 					user = users[0]
-					session['user'] = request.form['loginemail']
+					session['user'] = loginemail
 					session['id'] = user['id']
 					session['logged_in'] = True
 					session.permanent = True
@@ -89,16 +105,25 @@ def index():
 	# flash('hello')
 	return render_template("index.html");
 
+# @app.route('/deals', methods=['GET'])
+# def deals():
+# 	return render_template("deals.html")
+
 @app.route('/deals', methods=['GET'])
-def deals():
+def secretdeals():
 	if ('logged_in' in session):
 		print session['user']
 	# else:
 		# return redirect('/')
-	db = MySQLdb.connect(**dbconfig)
+	db = MySQLdb.connect(**codesDB)
 	cur = db.cursor(MySQLdb.cursors.DictCursor);
 	searchTerm = "%%"
 	offset = (0)
+	pageNumber = request.args.get('page')
+	if (pageNumber != None):
+		offset = int(request.args.get('page')) * 200
+	else:
+		pageNumber = 0
 	searchTerms = request.args.get('s')
 	whereClause = ""
 	words = []
@@ -111,23 +136,46 @@ def deals():
 				continue
 			words[index] = '%' + word + '%'
 			whereClause += " and productTitle LIKE %s "
+	else:
+		searchTerms = ""
+	if (request.args.get('q') != None):
+		whereClause += request.args.get('q')
 	# return whereClause
 	sqlTuples = tuple(words)
 	sqlTuples = sqlTuples + (offset,)
 	# return str(sqlTuples)
 	query = 'SELECT * from Product ' + whereClause + ' ORDER BY startDate DESC LIMIT 200 OFFSET %s'
+	# return str(query)
 	cur.execute(query, sqlTuples)
 	products = cur.fetchall()
 	cur.close()
 	db.close()
+	loadLeftButton = False
+	loadRightButton = False
+	if(offset > 0):
+		loadLeftButton = True
+	if(len(products) == 200):
+		loadRightButton = True
 	# return str(products[0])
-	return render_template("deals.html", products=products);
+	return render_template("deals.html", products=products, pageNumber=pageNumber, searchValue=searchTerms, 
+		prevPage=loadLeftButton, nextPage=loadRightButton);
+
+def url_for_other_page(currentPage, offset):
+    args = request.view_args.copy()
+    page = int(currentPage) + int(offset)
+    args['s'] = request.args.get('s')
+    args['q'] = request.args.get('q')    
+    args['page'] = page    
+    print str(url_for(request.endpoint, **args))
+    return url_for(request.endpoint, **args)
+
+app.jinja_env.globals['url_for_other_page'] = url_for_other_page
 
 @app.route('/product', methods=['GET'])
 def product():	
 	productID = request.args.get('id')
 	if(productID != None):
-		db = MySQLdb.connect(**dbconfig)
+		db = MySQLdb.connect(**codesDB)
 		cur = db.cursor(MySQLdb.cursors.DictCursor);
 		query = '''SELECT CODE FROM Code1 WHERE product_id=%s'''
 		cur.execute(query, (productID,))
