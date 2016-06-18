@@ -15,25 +15,25 @@ mimetypes.add_type('image/svg+xml', '.svg')
 
 db = SQLAlchemy()
 
-# dbconfig = {
-# 	'user': 'root',
-# 	# 'passwd': 'thebesteecsgroupever',
-# 	'host': 'localhost',
-# 	'db': 'dealsWebsite'
-# 	# 'db' : 'website'
-# }
-
-# @app.before_request
-# def make_session_permanent():
-# 	session.permanent = True
-
-codesDB = {
+dbconfig = {
 	'user': 'root',
 	# 'passwd': 'thebesteecsgroupever',
 	'host': 'localhost',
 	# 'db': 'dealsWebsite'
 	'db' : 'website'
 }
+
+# @app.before_request
+# def make_session_permanent():
+# 	session.permanent = True
+
+# codesDB = {
+# 	'user': 'root',
+# 	# 'passwd': 'thebesteecsgroupever',
+# 	'host': 'localhost',
+# 	# 'db': 'dealsWebsite'
+# 	'db' : 'website'
+# }
 
 dbconfig = {
 	'user': 'hajalie7',
