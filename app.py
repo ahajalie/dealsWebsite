@@ -192,6 +192,10 @@ def product():
 	else:
 		return redirect('/')
 
+@app.route('/products', methods=['GET'])
+def myProducts():
+	return redirect('/')	
+
 @app.route('/logout')
 def logout():
 	session.pop('logged_in', None)
