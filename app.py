@@ -115,7 +115,7 @@ def secretdeals():
 		print session['user']
 	# else:
 		# return redirect('/')
-	db = MySQLdb.connect(**codesDB)
+	db = MySQLdb.connect(**dbconfig)
 	cur = db.cursor(MySQLdb.cursors.DictCursor);
 	searchTerm = "%%"
 	offset = (0)
@@ -175,7 +175,7 @@ app.jinja_env.globals['url_for_other_page'] = url_for_other_page
 def product():	
 	productID = request.args.get('id')
 	if(productID != None):
-		db = MySQLdb.connect(**codesDB)
+		db = MySQLdb.connect(**dbconfig)
 		cur = db.cursor(MySQLdb.cursors.DictCursor);
 		query = '''SELECT CODE FROM Code1 WHERE product_id=%s'''
 		cur.execute(query, (productID,))
