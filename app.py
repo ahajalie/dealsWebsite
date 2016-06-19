@@ -171,7 +171,7 @@ def secretdeals():
 	if(len(products) == 200):
 		loadRightButton = True
 	# return str(products[0])
-	print int(session['seller'])
+	# print int(session['seller'])
 	return render_template("deals.html", isSeller = int(session['seller']), products=products, pageNumber=pageNumber, searchValue=searchTerms, 
 		prevPage=loadLeftButton, nextPage=loadRightButton);
 
