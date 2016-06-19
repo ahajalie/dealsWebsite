@@ -316,7 +316,7 @@ def myAccount():
 		db = MySQLdb.connect(**dbconfig)
 		cur = db.cursor(MySQLdb.cursors.DictCursor);
 		if "become_seller" in request.form:
-			cur.execute('''UPDATE USER SET isSeller=1 WHERE id=%s''', (session['id'],))
+			cur.execute('''UPDATE User SET isSeller=1 WHERE id=%s''', (session['id'],))
 			db.commit()
 			session['seller'] = 1
 			flash("You are now a seller! View the seller portal above to list your products!", "success-occurred")
@@ -355,7 +355,7 @@ def myAccount():
 				cur.close()
 				return redirect('/myaccount')			
 			#yes, i am copy pasting. sorry
-			cur.execute('''SELECT * FROM USER WHERE id=%s''', (session['id'],))
+			cur.execute('''SELECT * FROM User WHERE id=%s''', (session['id'],))
 			users = cur.fetchall()
 			if len(users) == 0:
 				return str("An unknown error occurred. Sorry")
