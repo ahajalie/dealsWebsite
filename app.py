@@ -15,13 +15,13 @@ mimetypes.add_type('image/svg+xml', '.svg')
 
 db = SQLAlchemy()
 
-dbconfig = {
-	'user': 'root',
-	# 'passwd': 'thebesteecsgroupever',
-	'host': 'localhost',
-	'db': 'dealsWebsite'
-	# 'db' : 'website'
-}
+# dbconfig = {
+# 	'user': 'root',
+# 	# 'passwd': 'thebesteecsgroupever',
+# 	'host': 'localhost',
+# 	'db': 'dealsWebsite'
+# 	# 'db' : 'website'
+# }
 
 # @app.before_request
 # def make_session_permanent():
@@ -35,12 +35,12 @@ codesDB = {
 	# 'db' : 'website'
 }
 
-# dbconfig = {
-# 	'user': 'hajalie7',
-# 	'passwd': 'broncos24',
-# 	'host': 'hajalie7.mysql.pythonanywhere-services.com',
-# 	'db' : 'hajalie7$default'
-# }
+dbconfig = {
+	'user': 'hajalie7',
+	'passwd': 'broncos24',
+	'host': 'hajalie7.mysql.pythonanywhere-services.com',
+	'db' : 'hajalie7$default'
+}
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
