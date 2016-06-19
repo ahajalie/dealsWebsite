@@ -34,6 +34,8 @@ def doStuff():
 		users = cur.fetchall()
 		if(len(users) > 0):
 			session['seller'] = users[0]['isSeller']
+		db.close()
+		cur.close()
 
 codesDB = {
 	'user': 'root',
