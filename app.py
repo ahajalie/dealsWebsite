@@ -26,16 +26,17 @@ db = SQLAlchemy()
 @app.before_request
 def doStuff():
 	if 'seller' not in session:
-		db = MySQLdb.connect(**dbconfig)
-		cur = db.cursor(MySQLdb.cursors.DictCursor);
-		cur.execute('''SELECT * 
-			FROM User 
-			WHERE id=%s ''', (session['id'],))
-		users = cur.fetchall()
-		if(len(users) > 0):
-			session['seller'] = users[0]['isSeller']
-		db.close()
-		cur.close()
+		if 'id' in session and 'logged_in' in session:
+			db = MySQLdb.connect(**dbconfig)
+			cur = db.cursor(MySQLdb.cursors.DictCursor);
+			cur.execute('''SELECT * 
+				FROM User 
+				WHERE id=%s ''', (session['id'],))
+			users = cur.fetchall()
+			if(len(users) > 0):
+				session['seller'] = users[0]['isSeller']
+			db.close()
+			cur.close()
 
 codesDB = {
 	'user': 'root',
