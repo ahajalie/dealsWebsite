@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Seller Portal</title>
+  <link rel="icon" href="../static/images/favicon.ico"/>
+
+    
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default rounded borders and increase the bottom margin */ 
+    .navbar {
+      margin-bottom: 50px;
+      border-radius: 0;
+    }
+    
+    /* Remove the jumbotron's default bottom margin */ 
+     .jumbotron {
+      margin-bottom: 0;
+    }
+
+    .panel-button {
+      width: 90%;
+      padding: 10px;
+      margin-bottom: 25px;
+      font-size: 125%;
+    }
+
+    .panel-button-sold-out {
+      width: 90%;
+      padding: 10px;
+      margin-bottom: 25px;
+      font-size: 125%;
+      background-color: #ebccd1;
+      border-color: #ebccd1;
+      color: #a94442;
+
+    }
+
+    .btn-danger:focus {
+      background-color: #ebccd1;
+    }
+
+    .btn-danger:hover {
+      background-color: #ebccd1;
+    }
+
+    .panel-img {
+      min-height: 250px;
+      max-height: 250px;
+      object-fit: contain;
+      padding-bottom: 12px;
+      width: 100%;
+    }
+
+    .panel-title {
+      font-size: 125%;
+      min-height: 95px;
+      max-height: 95px;
+      overflow: hidden;
+      text-overflow: clip;
+    }
+
+    .price-text {
+      font-size: 150%;
+      padding-left: 8px;
+      line-height: 25px;
+      text-align: left;
+    }
+
+    .price-text-soldout {
+      font-size: 150%;
+      padding-left: 8px;
+      line-height: 25px;
+      text-align: left;
+      color: #a94442;
+    }
+
+    .logo-style {
+      max-height: 45px;
+      position: relative;
+      top: -15px;
+    }
+
+    .search-style {
+      width: 40%;
+      /*min-height:40px;*/
+      /*font-size:125%;*/
+    }
+
+    .query-style {
+      width:20%;
+    }
+    
+    .search-button-style {
+      /*width: 40%;*/
+      min-height:150%;
+      /*font-size:125%;*/
+    }
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+  </style>
+</head>
+
+<nav class="navbar navbar-default navbar-fixed-top" >
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand navbar-left" href="/"><img src="../static/images/horizontalLogo.svg" alt="Logo" class="logo-style"/></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <!-- <li class="active"><a href="#">Home</a></li> -->
+        <!-- <li><a href="#">My Products</a></li> -->
+        <!-- <li><a href="#">Deals</a></li> -->
+        <!-- <li><a href="#">Stores</a></li> -->
+        <!-- <li><a href="#">Contact</a></li> -->
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <!-- <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your Account </a></li> -->
+        <li><a href="/products"><span class="glyphicon glyphicon-shopping-cart"></span> My Products</a></li>
+        <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+

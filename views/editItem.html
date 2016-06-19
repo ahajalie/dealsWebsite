@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Edit Item</title>
+  <link rel="icon" href="../static/images/favicon.ico"/>
+
+    
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
+  <style>
+    /* Remove the navbar's default rounded borders and increase the bottom margin */ 
+    .navbar {
+      margin-bottom: 50px;
+      border-radius: 0;
+    }
+    
+    /* Remove the jumbotron's default bottom margin */ 
+     .jumbotron {
+      margin-bottom: 0;
+    }
+
+    .panel-button {
+      width: 90%;
+      padding: 10px;
+      margin-bottom: 25px;
+      font-size: 125%;
+    }
+
+    .panel-button-sold-out {
+      width: 90%;
+      padding: 10px;
+      margin-bottom: 25px;
+      font-size: 125%;
+      background-color: #ebccd1;
+      border-color: #ebccd1;
+      color: #a94442;
+
+    }
+
+    .btn-danger:focus {
+      background-color: #ebccd1;
+    }
+
+    .btn-danger:hover {
+      background-color: #ebccd1;
+    }
+
+    .panel-img {
+      min-height: 250px;
+      max-height: 250px;
+      object-fit: contain;
+      padding-bottom: 12px;
+      width: 100%;
+    }
+
+    .panel-title {
+      font-size: 125%;
+      min-height: 95px;
+      max-height: 95px;
+      overflow: hidden;
+      text-overflow: clip;
+    }
+
+    .price-text {
+      font-size: 150%;
+      padding-left: 8px;
+      line-height: 25px;
+      text-align: left;
+    }
+
+    .price-text-soldout {
+      font-size: 150%;
+      padding-left: 8px;
+      line-height: 25px;
+      text-align: left;
+      color: #a94442;
+    }
+
+    .logo-style {
+      max-height: 45px;
+      position: relative;
+      top: -15px;
+    }
+
+    .search-style {
+      width: 40%;
+      /*min-height:40px;*/
+      /*font-size:125%;*/
+    }
+
+    .query-style {
+      width:20%;
+    }
+    
+    .search-button-style {
+      /*width: 40%;*/
+      min-height:150%;
+      /*font-size:125%;*/
+    }
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top" >
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand navbar-left" href="/"><img src="../static/images/horizontalLogo.svg" alt="Logo" class="logo-style"/></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <!-- <li class="active"><a href="#">Home</a></li> -->
+        <!-- <li><a href="#">My Products</a></li> -->
+        <!-- <li><a href="#">Deals</a></li> -->
+        <!-- <li><a href="#">Stores</a></li> -->
+        <!-- <li><a href="#">Contact</a></li> -->
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <!-- <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your Account </a></li> -->
+        <li><a href="/products"><span class="glyphicon glyphicon-shopping-cart"></span> My Products</a></li>
+        <li><a href="/myaccount"><span class="glyphicon glyphicon-user"></span> My Account</a></li>
+        <li><a href="/sellerPortal"><span class="glyphicon glyphicon-star"></span> Seller Portal</a></li>
+        <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container">
+  <br><br><br><br><br><br><br>
+
+  <div id="addproduct" class="center-block">
+
+    <!-- <div class="col-lg-6" style="padding-top:50px; text-align:center;" disabled> -->
+
+     <form class="form-horizontal" role="form" method="post">
+      <div class="form-group">
+        <label class="control-label col-sm-4" for="title">Product Title</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" name="title" id="title" placeholder="" value="{{product.productTitle}}" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-4" for="normalPrice">Normal Price:</label>
+        <div class="col-sm-6">
+          <input type="number" step="0.01" min="0" class="form-control" id="normalPrice" name="normalPrice" placeholder="" value="{{product.normalPrice}}" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-4" for="promoPrice">Promotional Price:</label>
+        <div class="col-sm-6">
+          <input type="number" step="0.01" min="0" class="form-control" name="promoPrice" id="promoPrice" placeholder="" value="{{product.promoPrice}}" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-4" for="productURL">Product URL:</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" name="productURL" id="productURL" value="{{product.productURL}}" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-4" for="imageURL">Image URL:</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" name="imageURL" id="imageURL" placeholder="The URL for the product image, if blank default image will be used" value="{{product.imageURL}}">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-4" for="description">Description:</label>
+        <div class="col-sm-6">          
+          <textarea rows="6" style="width:100%;" name="description" id="description">{{product.description}}</textarea>
+        </div>
+      </div>
+      
+      <input type="hidden" class="form-control" id="productID" name="productID" placeholder="" value="{{product.productID}}">
+      <div class="form-group">
+        <label class="control-label col-sm-4" for="codes">Codes:</label>
+        <div class="col-sm-6">          
+          <textarea rows="6" style="width:100%;" name="codes" id="codes" placeholder="Leave blank if you would like to wait for approval before sending out codes">{{product.codeInput}}</textarea>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-4" for="normalPrice">Duration (days):</label>
+        <div class="col-sm-6">
+          <input type="number" step="1" min="1" class="form-control" id="duration" name="duration" placeholder="" value="{{product.duration}}" required>
+        </div>
+      </div>
+<!--       <div class='form-group'>
+            <label class="control-label col-sm-4" for="pwd">Start Date:</label>
+            <div class="col-sm-6">
+                <div class='input-group date' id='datepicker'>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div> -->
+      
+      <p class="center-block"> <b> Note: </b> Product will be approved first before going live. As the website has just started, deals will not begin to go live until we set an appropriate launch date. Please make sure the codes will not expire for at least a month. One or two random codes may be tested to ensure that the codes are valid. </p>
+      <div class="form-group">
+        <div style="padding-top:6px;">
+          <button type="submit" class="btn btn-success center-block" name="add_button">Update Product</button>
+        </div>
+      </div>
+
+      </form>
+
+    <!-- </div> -->
+
+  </div>
+
+
+    <!-- Placed at the end of the document so the pages load faster -->
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+    <script src="../static/js/bootstrap.min.js"></script> 
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.min.css" />
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker3.min.css" />
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="../static/js/ie10-viewport-bug-workaround.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../static/js/ie10-viewport-bug-workaround.js"></script>
+    <script type="text/javascript">
+          $(function () {
+              $('#datepicker').datepicker();
+          });
+      </script>
+<footer class="container-fluid text-center">
+  <p>&copy; 2016 Slick Vouchers</p>  
+<!--   <form class="form-inline">Get deals:
+    <input type="email" class="form-control" size="50" placeholder="Email Address">
+    <button type="button" class="btn btn-danger">Sign Up</button>
+  </form> -->
+</footer>
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+    <script src="../static/js/homepage.js"></script>
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+
+    <script src="../static/js/ie10-viewport-bug-workaround.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../static/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

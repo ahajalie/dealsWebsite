@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>My Account</title>
+  <link rel="icon" href="../static/images/favicon.ico"/>
+
+    
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
+  <style>
+    /* Remove the navbar's default rounded borders and increase the bottom margin */ 
+    .navbar {
+      margin-bottom: 50px;
+      border-radius: 0;
+    }
+    
+    /* Remove the jumbotron's default bottom margin */ 
+     .jumbotron {
+      margin-bottom: 0;
+    }
+
+    .panel-button {
+      width: 90%;
+      padding: 10px;
+      margin-bottom: 25px;
+      font-size: 125%;
+    }
+
+    .panel-button-sold-out {
+      width: 90%;
+      padding: 10px;
+      margin-bottom: 25px;
+      font-size: 125%;
+      background-color: #ebccd1;
+      border-color: #ebccd1;
+      color: #a94442;
+
+    }
+
+    .btn-danger:focus {
+      background-color: #ebccd1;
+    }
+
+    .btn-danger:hover {
+      background-color: #ebccd1;
+    }
+
+    .panel-img {
+      min-height: 250px;
+      max-height: 250px;
+      object-fit: contain;
+      padding-bottom: 12px;
+      width: 100%;
+    }
+
+    .panel-title {
+      font-size: 125%;
+      min-height: 95px;
+      max-height: 95px;
+      overflow: hidden;
+      text-overflow: clip;
+    }
+
+    .price-text {
+      font-size: 150%;
+      padding-left: 8px;
+      line-height: 25px;
+      text-align: left;
+    }
+
+    .price-text-soldout {
+      font-size: 150%;
+      padding-left: 8px;
+      line-height: 25px;
+      text-align: left;
+      color: #a94442;
+    }
+
+    .logo-style {
+      max-height: 45px;
+      position: relative;
+      top: -15px;
+    }
+
+    .search-style {
+      width: 40%;
+      /*min-height:40px;*/
+      /*font-size:125%;*/
+    }
+
+    .query-style {
+      width:20%;
+    }
+
+    .error-occurred {
+      background-color: #FFB6C1;
+    }
+
+    .success-occurred {
+      background-color: #90EE90;
+    }
+    
+    .search-button-style {
+      /*width: 40%;*/
+      min-height:150%;
+      /*font-size:125%;*/
+    }
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top" >
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand navbar-left" href="/"><img src="../static/images/horizontalLogo.svg" alt="Logo" class="logo-style"/></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <!-- <li class="active"><a href="#">Home</a></li> -->
+        <!-- <li><a href="#">My Products</a></li> -->
+        <!-- <li><a href="#">Deals</a></li> -->
+        <!-- <li><a href="#">Stores</a></li> -->
+        <!-- <li><a href="#">Contact</a></li> -->
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <!-- <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your Account </a></li> -->
+        <li><a href="/products"><span class="glyphicon glyphicon-shopping-cart"></span> My Products</a></li>
+        <li class="active"><a href="/myaccount"><span class="glyphicon glyphicon-user"></span> My Account</a></li>
+        {% if isSeller == 1 %}
+        <li><a href="/sellerPortal"><span class="glyphicon glyphicon-star"></span> Seller Portal</a></li>
+        {% endif %}
+        <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container">
+  <br><br><br><br><br>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for category, message in messages %}
+      <div class="row {{category}}">
+          <p style="text-align:center; padding-top:6px;">{{message}}</p>
+      </div>
+    {% endfor %}
+    </ul>
+  {% endif %}
+  {% endwith %}
+  <div class="row">
+      <h4 class="text-center"> Seller Preferences </h4> <br>
+      {% if isSeller==0 %}
+      <p style="text-align:center;"> You are currently not a seller. </p><br>
+      <form class="form-horizontal" role="form" method="post">
+      <div class="form-group">
+          <button type="submit" class="btn btn-success center-block" name="become_seller">Become Seller!</button>
+      </div>
+      </form>
+      {% endif %}
+  </div>
+  <hr>
+<!--   <div class="row">
+      <h4 class="text-center"> Update email </h4> <br>
+      <form class="form-horizontal" role="form" method="post">
+                <div class="form-group">
+                  <label class="control-label col-sm-4" for="email">New Email:</label>
+                  <div class="col-sm-6">
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Enter email" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-sm-4" for="pwd">Current Password:</label>
+                  <div class="col-sm-6">
+                    <input type="password" class="form-control" name="emailpassword" id="pwd" placeholder="Enter password" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success center-block" name="update_email">Update email</button>
+                </div>
+
+                </form>
+      </div>
+      <hr> -->
+      <div class="row">
+      <h4 class="text-center"> Update Password </h4> <br>
+      <form class="form-horizontal" role="form" method="post">
+                <div class="form-group">
+                  <label class="control-label col-sm-4" for="email" required>Current Password:</label>
+                  <div class="col-sm-6">
+                    <input type="password" class="form-control" name="oldpassword" id="oldpassword" placeholder="Enter password" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-sm-4" for="pwd" required>New Password:</label>
+                  <div class="col-sm-6">
+                    <input type="password" class="form-control" id="pwd" name="password0" placeholder="Enter password" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-sm-4" for="pwd">Confirm New Password:</label>
+                  <div class="col-sm-6">
+                    <input type="password" class="form-control" name="password1" id="pwd" placeholder="Enter password" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success center-block" name="update_pass">Change Password</button>
+                </div>
+
+                </form>
+      </div>
+      <br>
+</div>
+
+
+
+
+<footer class="container-fluid text-center">
+  <p>&copy; 2016 Slick Vouchers</p>  
+<!--   <form class="form-inline">Get deals:
+    <input type="email" class="form-control" size="50" placeholder="Email Address">
+    <button type="button" class="btn btn-danger">Sign Up</button>
+  </form> -->
+</footer>
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+    <script src="../static/js/homepage.js"></script>
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+
+    <script src="../static/js/ie10-viewport-bug-workaround.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../static/js/ie10-viewport-bug-workaround.js"></script>
+</body>
+</html>
